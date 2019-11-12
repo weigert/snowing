@@ -11,14 +11,14 @@ Description:
 
 //Setup jQuery
 var $ = jQuery.noConflict();
-$(startSnowing); 		//On Load, Start Snowing!
-$(window).resize(recanvas);	//On Window Resize, Recanvas!
+$(function(){snowing.start();});	//On Load, Start Snowing!
+//On resize, reset the canvas!
+$(window).resize(function(){
+	snowing.canvas.width = window.innerWidth;
+    	snowing.canvas.height = window.innerHeight;
+});
 
 var flake = [];
-
-function startSnowing() {
-    snowing.start();
-}
 
 var snowing = {
     canvas : document.createElement("canvas"),
@@ -29,7 +29,7 @@ var snowing = {
         this.frameNo = 0;
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         //Update Interval in Milliseconds
-        this.interval = setInterval(updateGameArea, 20);
+        this.interval = setInterval(update, 20);
     },
     clear : function () {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -42,15 +42,8 @@ var snowing = {
 //Set the Class for CSS Rules
 snowing.canvas.className = "snowing";
 
-function recanvas(){
-    //Reset the Canvas Size
-    snowing.canvas.width = window.innerWidth;
-    snowing.canvas.height = window.innerHeight;
-}
-
 function everyinterval(n) {
-    if ((snowing.frameNo / n) % 1 == 0) {return true;}
-    return false;
+    return !((snowing.frameNo / n) % 1);
 }
 
 function component(width, height, color, x, y) {
@@ -59,21 +52,16 @@ function component(width, height, color, x, y) {
     this.height = height;
     this.x = x;
     this.y = y;
-    this.speedY = 1;
 
-    //Update Function
+    //Draw Function
     this.draw = function(){
-        ctx = snowing.context;
-        ctx.fillStyle = color;
-  	ctx.fillRect(this.x, this.y, this.width, this.height);
+        snowing.context.fillStyle = color;
+  	snowing.context.fillRect(this.x, this.y, this.width, this.height);
     }
 }
 
-function updateGameArea() {
-    //Update the Frame Number
+function update() {
     snowing.frameNo++;
-
-    //Clear the Canvas
     snowing.clear();
 
     //Add new Flakes at Interval
@@ -84,8 +72,8 @@ function updateGameArea() {
         flake[i].y += 3*Math.random();
         flake[i].x += Math.random()*2-1;
         flake[i].draw();
+	    
 	//Remove guys that go too far.
-	if(flake[i].y > snowing.canvas.height){ flake.splice(i, 1)
-	i--;}
+	if(flake[i].y > snowing.canvas.height){ flake.splice(i, 1); i--; }
     }
 }
