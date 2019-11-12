@@ -2,7 +2,7 @@
 WP plugin to make it snow on your blog
 
 # Installation
-Drag the contents of this repository into a folder in your /wp-content/plugins folder. Then from the administration panel, you will be able to activate the plugin.
+Drag the contents of this repository into a folder (e.g. "/snowing/") in your /wp-content/plugins/ folder. Then from the administration panel, you will be able to activate the plugin. That's it! Should work out of the box.
 
 # Usage
 The snowing overlay is not activated by default. To activate it, check the box in the Administration Panel -> Tools -> Snowing.
