@@ -1,4 +1,8 @@
-.snowing_tool_container{
+div.snowing_tool_container{
+	padding: 10px;
+}
+
+div.snowing_tool_option{
 	padding: 10px;
 }
 
@@ -9,6 +13,11 @@ canvas.snowing{
 	pointer-events: none;
 	z-index: 1000;
 }
+
+h2.snowing{
+	display: inline;
+}
+
 
 @media only screen and (max-width: 600px){
 	canvas.snowing{display: none;}
