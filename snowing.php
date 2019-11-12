@@ -13,7 +13,7 @@ add_action('admin_menu', 'snowing_add_toolpage');
 
 function snowing_add_toolpage(){
 	//Add the Management Page Callback
-	add_management_page( 'VCS Snowing', 'Test', 'manage_options', __FILE__, 'snowing_tool_page');
+	add_management_page( 'Snowing', 'Snowing', 'manage_options', __FILE__, 'snowing_tool_page');
 
 	//Add the Plugin Settings
 	add_action( 'admin_init', 'snowing_register_settings' );
