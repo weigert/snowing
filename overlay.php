@@ -88,7 +88,7 @@ function updateGameArea() {
         flake[i].x += Math.random()*2-1;
         flake[i].draw();
 	//Remove guys that go too far.
-	if(flake[i].y > snowing.canvas.height) flake.splice(i);
+	if(flake[i].y > snowing.canvas.height){ flake.splice(i, 1); i--;}
     }
 }
 
