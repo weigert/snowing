@@ -18,7 +18,6 @@ h2.snowing{
 	display: inline;
 }
 
-
 @media only screen and (max-width: 600px){
 	canvas.snowing{display: none;}
 }
