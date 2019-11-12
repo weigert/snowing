@@ -20,7 +20,7 @@ The canvas then spawns flakes which jitter randomly as they move down the screen
 
 It also handles resizing.
 
-Edit: Previously, this had an issue with wordpress because I was including the javascript directly. The script and style are now properly enqueued, so that it doesn't have any conflicts with wordpress. Additionally, you can now choose whether you only want to display it on the front page, or on all pages.
+Edit: Previously, this had an issue with wordpress because I was including the javascript directly. The script and style are now properly enqueued, so that it doesn't have any conflicts with wordpress. Now also uses jQuery for event listening. I have to do this because of how wordpress works. Additionally, you can now choose whether you only want to display it on the front page, or on all pages.
 
 By default, the snowing effect is deactivated in the wp-admin backend, but could be activated by adding an admin_enqueue_scripts callback at the bottom of snowing.php! Not sure why you would want this though.
 
