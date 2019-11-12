@@ -1,11 +1,3 @@
-<!-- Make sure no internet explorer!! -->
-
-<![if !IE]>
-<body onload="startSnowing()" onresize="recanvas()">
-
-<link rel="stylesheet" type="text/css" href="/wp-content/plugins/snowing/style.css">
-
-<script>
 /*
 Author: Nicholas McDonald
 Created: 2. December 2016
@@ -16,6 +8,11 @@ Description:
 	Handles Window resizing, rejects internet explorer,
 	handles mobile versions with CSS.
 */
+
+//Setup jQuery
+var $ = jQuery.noConflict();
+$(startSnowing); 		//On Load, Start Snowing!
+$(window).resize(recanvas);	//On Window Resize, Recanvas!
 
 var flake = [];
 
@@ -88,10 +85,7 @@ function updateGameArea() {
         flake[i].x += Math.random()*2-1;
         flake[i].draw();
 	//Remove guys that go too far.
-	if(flake[i].y > snowing.canvas.height){ flake.splice(i, 1); i--;}
+	if(flake[i].y > snowing.canvas.height){ flake.splice(i, 1)
+	i--;}
     }
 }
-
-</script>
-</body>
-<![endif]>
